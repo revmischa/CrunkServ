@@ -1,0 +1,14 @@
+#header {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #222;
+    background-color: #CCEECC;
+}
+
+#faq div {
+    margin-left: 20px;
+}

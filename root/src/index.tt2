@@ -1,0 +1,27 @@
+[% META title="CrunkServ homepage" %]
+
+<h1>Welcome to the $sitename homepage!</h1>
+
+<div id="faq">
+    <div>
+        <h2>What is $sitename?</h1>
+        <p>$sitename is a free service that provides very simple bots to manage IRC channels. It is under active development, but is currently capable of running bots to prevent your channels from being taken over or becoming op-less. It is especially useful for small channels on EFNet, which are unsupported by ChanFix and may not have the resources of skill to run proper bots.</p>
+    </div>
+    
+    <div>
+        <h2>How do I configure $sitename for my channel?</h2>
+        <p>Using $sitename is extremely simple. First you must <a href="[% c.uri_for('/channel/register') %]">register</a> your channel and an owner password for the channel. The bot will then join your channel, and then provide +o to anyone who gives the correct password for their nick. Obviously, you must op the bot for it to work.</p>
+        <p>Once your channel is registered, you can <a href="[% c.uri_for('/channel/manage') %]">add nick/password combinations</a>, and these users will be able to request +o from the bot.</p>
+    </div>
+    
+    <div>
+        <h2>How do I use $sitename once it is configured?</h2>
+        <p>Once the bot is opped and in your channel, PM it with "op password" (where password is the password configured for your nick). That's it.</p>
+    </div>
+    
+    <hr/>
+    
+    <div>
+        <h3><a href="[% c.uri_for('/channel/manage') %]">Click here</a> to manage your registered channels</h3>
+    </div>
+</div>

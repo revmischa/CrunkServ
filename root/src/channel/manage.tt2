@@ -1,0 +1,52 @@
+[% META title="Manage Channel" %]
+
+[% IF should_have_channel AND ! chan %]
+    <div><strong>Sorry, that channel is not registered</strong></div>
+[% END %]
+
+[% IF invalid_password %]
+    <div><strong>Incorrect password</strong></div>
+[% END %]
+
+<form action="[% c.uri_for('/channel/manage') %]" method="post">
+    <input type="hidden" name="id" value="[% chan.id | html_entity %]">
+    What channel would you like to manage? <input name="name" value="[% chan.name | html_entity %]" /><br/>
+    Channel owner password: <input name="pass" type="password" /><br/>
+    <input type="submit" value="Manage" />
+</form>
+
+[% IF chan AND c.can_manage_channel(chan) %]
+    <fieldset>
+        <legend>[% chan.name | html %]</legend>
+        
+        <form action="[% c.uri_for('/channel/add_nick') %]" method="post">
+            <input type="hidden" name="channel_id" value="[% chan.id | html_entity %]">
+            Add nick (required): <input name="nick" /><br/>
+            Password (required): <input name="pass" /><br/>
+            <input type="submit" value="Add nick" />
+        </form>
+        
+        [% IF chan.nicks.size %]
+        <hr/>
+        
+        <table cellspacing="2" cellpadding="2">
+            <th>
+                <tr>
+                    <td>Nick</td>
+                    <td>Password</td>
+                    <td>Delete</td>
+                </tr>
+            </th>
+            <tbody>
+                [% FOREACH cn IN chan.channel_nicks %]
+                    <tr>
+                        <td>[% cn.nick.nick | html %]</td>
+                        <td>[% cn.nick.password | html %]</td>
+                        <td><a href="[% c.uri_for('/channel/delete_nick', channel_nick_id = cn.id) %]">Delete</a></td>
+                    </tr>
+                [% END %]
+            </tbody>
+        </table>
+        [% END %]
+    </fieldset>
+[% END %]

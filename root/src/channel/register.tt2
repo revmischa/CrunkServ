@@ -1,0 +1,15 @@
+[% META title="Register Channel" %]
+
+<h2>Register Channel</h2>
+
+<p>Registering your channel is simple. Enter the channel name and an owner password (currently only EFnet is supported).</p>
+
+<form method="post" action="[% c.uri_for('/channel/register_do') %]">
+    Channel name (e.g. #politics): <input name="channel" /><br/>
+    Owner password: <input name="pass" type="password" /><br/>
+    Retype password: <input name="p2" type="password" /><br/>
+    <br/>
+    Owner email: <input name="email" /><br/>
+    
+    <input type="submit" value="Register" />
+</form>

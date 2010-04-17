@@ -1,0 +1,3 @@
+<p>Congratulations! Your channel [% channel.channel_name | html %] has been registered. Please type "/mode +o [% channel.channel_name %] $botnick" to activate it. In order to use it properly, everyone including you must be registered. Click the link below.</p>
+
+<p>To register users for your channel, please <a href="[% c.uri_for('/channel/manage', id = channel.id) %]">click here</a></p>

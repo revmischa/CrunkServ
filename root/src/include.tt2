@@ -1,0 +1,4 @@
+[%-
+    sitename = c.config.name;
+    botnick = c.config.botnick OR c.config.name;
+-%]

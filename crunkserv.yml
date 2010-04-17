@@ -1,0 +1,8 @@
+---
+name: CrunkServ
+default_view: cs
+botnick: CrunkServ
+
+session:
+    dbic_class: 'CSDB::Session'
+    expires:    31449600

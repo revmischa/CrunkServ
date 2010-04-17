@@ -1,0 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+   <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+       <title>[% page_title or template.title OR site.title | html %]</title>
+       <link rel="stylesheet" href="[% c.uri_for('/cs.css') %]" type="text/css" media="screen, projection"/> 
+       <script type="text/javascript" src="[% c.uri_for('/static/js/prototype.js') %]"></script>
+       <script type="text/javascript" src="[% c.uri_for('/static/ckeditor/ckeditor.js') %]"></script>
+       <script type="text/javascript" src="[% c.uri_for('/static/js/global.js') %]"></script>
+   </head>
+   <body>
+       <div id="header"><a href="[% c.uri_for('/') %]">[% sitename | html %]</a></div>
+       
+       [% content %]
+    </body>
+</html>
