@@ -19,7 +19,8 @@ __PACKAGE__->mk_accessors(qw/chan irc schema/);
 my $config = CrunkServ::Util->get_config;
 
 sub nick { $config->{botnick} }
-sub ircname { $config->{name} }
+sub ircname { $config->{ircname} }
+sub username { $config->{username} }
 
 our $SERVER = 'irc.efnet.nl';
 #our $SERVER = 'hub.hardchats.com';
@@ -31,7 +32,7 @@ sub spawn {
     	nick => $class->nick,
     	ircname => $class->ircname,
     	server => $SERVER,
-        username => $class->ircname,
+        username => $class->username,
 		UseSSL => 0,
 		port => 6667,
  	) or die $!;
@@ -121,7 +122,7 @@ sub irc_msg {
         return;
     }
     
-    my $nick = $chan->nicks->find({ nick => $auth_nick });
+    my $nick = $chan->nicks->find({ nick => lc $auth_nick });
     
     unless ($nick) {
         $irc->yield(privmsg => $nick_name, "Sorry, $auth_nick is not registered for $chan_name.");

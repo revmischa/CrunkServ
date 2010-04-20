@@ -21,7 +21,7 @@ sub add_nick : Local {
         unless $c->can_manage_channel($chan);
         
     if ($nick_name) {
-        my $nick = $c->model('CSDB::Nick')->find_or_create({ nick => $nick_name });
+        my $nick = $c->model('CSDB::Nick')->find_or_create({ nick => lc $nick_name });
         $nick->update({ password => $pass });
         
         if (! $chan->nicks->find($nick->id)) {
@@ -103,13 +103,10 @@ sub register_do : Local {
     if ($channel) {
         return $c->error("Sorry, the channel $channel_name has already been registered. If you require assistance please join #crunkserv on efnet.");
     }
-
-    my $email = $c->req->param('email');
     
     $channel = $c->model('CSDB::Channel')->create({
         name => $channel_name,
         owner_password => $password,
-        owner_email => $email,
     });
     
     $c->session->{can_manage_channel}{$channel->id} = 1;

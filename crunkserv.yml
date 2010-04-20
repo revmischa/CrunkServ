@@ -1,7 +1,10 @@
 ---
 name: CrunkServ
 default_view: cs
+
 botnick: CrunkServ
+ircname: http://crunkserv.chatsnet.net
+username: CrunkServ
 
 session:
     dbic_class: 'CSDB::Session'
